@@ -1,3 +1,6 @@
+#define LINE1 0x80
+#define LINE2 0xC0
+
 void LCD_String(char *str){
     char i=0;
     for(i=0;i<16;i++){
@@ -18,10 +21,11 @@ void int2Str(char *str, int numDigit, int numValue){ //정수를 문자열에 �
         numDiv = 1;    
     }    
 }
-void LCD_addStr(char *str1,char *str2,int length_1,int length_2){ //두 개의 문자열을 순차적으로 대입해 합쳐진 문자열을 출력하는 함수
+void LCD_addStr(char *str1,char *str2,char line,int length_1,int length_2){ //두 개의 문자열을 순차적으로 대입해 합쳐진 문자열을 출력하는 함수
     /*
     첫 번째 문자열 str1
-    두 번째 문자열 str2
+    두 번째 문자열 str2                
+    출력 LCD의 줄 line (단,line은 상수 LINE1 또는 LINE2)
     첫 번째 문자열에서 사용할 문자의 수 length_1 (단, str1의 길이보다 작거나 같을 것)
     두 번째 문자열에서 사용할 문자의 수 length_2 (단, str2의 길이보다 작거나 같을 것)
     */ 
@@ -40,6 +44,7 @@ void LCD_addStr(char *str1,char *str2,int length_1,int length_2){ //두 개의 �
         for(i;i<16;i++){ //만약 문자열의 길이가 16이 되지 않았다면 나머지 공간을 공백기호로 대입
             result[i] = ' ';
         }
-    } 
+    }
+    LCD_cmd_write(line); //출력될 LCD의 줄을 지정
     LCD_String(result); // 합쳐진 문자열을 LCD에 출력
 }
