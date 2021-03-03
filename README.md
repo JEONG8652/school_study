@@ -1,4 +1,4 @@
 # school_study
-I use atmega128 with LCD(16x2)  
-non include set up  LCD register  
-only LCD_print fucntion
+## ✨ 무엇을 배우나요?
+### 📘 안드로이드
+학교에서 학습한 것들을 모아두는 레포지토리입니다.
